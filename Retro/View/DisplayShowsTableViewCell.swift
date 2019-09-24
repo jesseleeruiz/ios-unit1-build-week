@@ -9,6 +9,13 @@
 import UIKit
 
 class DisplayShowsTableViewCell: UITableViewCell {
+    
+    // MARK: - Properties
+    var show: Show? {
+        didSet {
+            updateViews()
+        }
+    }
 
     // MARK: - Outlets
     @IBOutlet weak var showImage: UIImageView!
@@ -20,5 +27,17 @@ class DisplayShowsTableViewCell: UITableViewCell {
 
     // MARK: - Actions
     @IBOutlet weak var watchedNotWatchedButton: UIButton!
+    
+    // MARK: - Methods
+    func updateViews() {
+        guard let show = show else { return }
+        let imagePoster = UIImage(named: show.showImageName )
+        showImage.image = imagePoster
+        showTitleLabel.text = show.showTitle
+        let seasonNum = String(show.season.seasonNum)
+        seasonLabel.text = seasonNum
+        let episodeNum = String(show.season.episodeCount)
+        episodeLabel.text = episodeNum
+    }
     
 }

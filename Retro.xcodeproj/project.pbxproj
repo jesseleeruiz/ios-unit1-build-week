@@ -17,6 +17,7 @@
 		80BB57272339657900B7F2D4 /* Show.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB57262339657900B7F2D4 /* Show.swift */; };
 		80BB572A2339659A00B7F2D4 /* ShowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB57292339659A00B7F2D4 /* ShowController.swift */; };
 		80BB572D233965E700B7F2D4 /* DisplayShowsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB572C233965E700B7F2D4 /* DisplayShowsTableViewCell.swift */; };
+		80BB5730233AB53E00B7F2D4 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BB572F233AB53E00B7F2D4 /* SearchCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		80BB57262339657900B7F2D4 /* Show.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Show.swift; sourceTree = "<group>"; };
 		80BB57292339659A00B7F2D4 /* ShowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowController.swift; sourceTree = "<group>"; };
 		80BB572C233965E700B7F2D4 /* DisplayShowsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayShowsTableViewCell.swift; sourceTree = "<group>"; };
+		80BB572F233AB53E00B7F2D4 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				80BB572C233965E700B7F2D4 /* DisplayShowsTableViewCell.swift */,
+				80BB572F233AB53E00B7F2D4 /* SearchCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 				80BB572A2339659A00B7F2D4 /* ShowController.swift in Sources */,
 				80BB571F233962A000B7F2D4 /* ShowViewController.swift in Sources */,
 				80BB57272339657900B7F2D4 /* Show.swift in Sources */,
+				80BB5730233AB53E00B7F2D4 /* SearchCollectionViewCell.swift in Sources */,
 				80BB5723233962DE00B7F2D4 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
