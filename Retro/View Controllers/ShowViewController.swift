@@ -16,17 +16,25 @@ class ShowViewController: UIViewController, UITableViewDataSource {
     // MARK: - Outlets
     @IBOutlet weak var tableView: UITableView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.dataSource = self
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.dataSource = self
+        tableView.reloadData()
     }
     
     // MARK: - METHODS
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        <#code#>
+        return showController.usersShows.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        <#code#>
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "displayShows", for: indexPath) as? DisplayShowsTableViewCell else { return UITableViewCell() }
+        
+        cell.show = showController.usersShows[indexPath.row]
+        return cell
+    }
+    
+    func updateViews() {
+        
     }
 }

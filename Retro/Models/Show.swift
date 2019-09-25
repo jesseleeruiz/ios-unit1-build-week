@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Show: Codable {
+struct Show: Codable{
     var showTitle: String
     var showImageName: String
     var showBio: String

@@ -10,6 +10,12 @@ import UIKit
 
 class SearchCollectionViewCell: UICollectionViewCell {
     
+    // MARK: - Outlets
+    @IBOutlet weak var showImage: UIImageView!
+    @IBOutlet weak var addRemoveButtonImage: UIButton!
+    
+    
+    
     // MARK: - Properties
     var showController = ShowController()
     var show: Show? {
@@ -18,27 +24,21 @@ class SearchCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    // MARK: - Outlets
-    @IBOutlet weak var showImage: UIImageView!
-    @IBOutlet weak var addRemoveButton: UIButton!
-    
-    
     // MARK: - Actions
     @IBAction func addRemoveButtonTapped(_ sender: UIButton) {
-        let button = sender
-        if {
-            
-        } else {
-            
-        }
-        showController.createShow()
+        addRemoveButtonImage.setImage(UIImage(named: "newCheck"), for: .normal)
+        guard let show = self.show else { return }
+        showController.createShow(show: show.self)
+        //self.showController.createShow()
+        
     }
+    
+    
     
     // MARK: - Methods
     func updateViews() {
         guard let show = show else { return }
-        let posterImage = String(showImage.image)
-        showImage.image = show.showImageName
+        showImage.image = UIImage(named: show.showImageName)
     }
     
     

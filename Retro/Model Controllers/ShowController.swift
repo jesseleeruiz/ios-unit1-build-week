@@ -9,6 +9,8 @@
 import Foundation
 
 class ShowController {
+    
+    // MARK: - Properties
     private(set) var usersShows: [Show] = []
     
     var shows: [Show] {
@@ -31,13 +33,16 @@ class ShowController {
         return allShows
     }
     
-    func createShow() {
-        for show in shows {
-            usersShows.append(show)
-        }
+    // MARK: - Methods
+    func createShow(show: Show) {
+        usersShows.append(show)
     }
     
-    
+//    func removeShow() {
+//        for show in usersShows {
+//            usersShows.remove(at: show)
+//        }
+//    }
     
 }
 

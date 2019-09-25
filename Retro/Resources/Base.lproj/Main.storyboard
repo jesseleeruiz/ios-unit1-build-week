@@ -108,6 +108,10 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="zbv-d2-BaA" id="or6-0b-TlU"/>
+                                    <outlet property="delegate" destination="zbv-d2-BaA" id="U61-N0-IfW"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -149,7 +153,7 @@
                                 </scopeButtonTitles>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SOi-FC-B1W">
-                                <rect key="frame" x="20" y="140" width="414" height="673"/>
+                                <rect key="frame" x="20" y="140" width="374" height="673"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="RoG-HU-qgT">
                                     <size key="itemSize" width="125" height="160"/>
@@ -158,56 +162,86 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="showPosters" id="h56-EX-FET" customClass="SearchCollectionViewCell" customModule="Retro" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="posterImage" id="h56-EX-FET" customClass="SearchCollectionViewCell" customModule="Retro" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="125" height="160"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="125" height="160"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SHj-ID-3sn">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awg-vl-b6u">
                                                     <rect key="frame" x="0.0" y="0.0" width="125" height="160"/>
-                                                </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tLy-lL-Jfi">
-                                                    <rect key="frame" x="95" y="0.0" width="30" height="24"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
-                                                    <state key="normal" title="Add"/>
-                                                    <connections>
-                                                        <action selector="addRemoveButtonTapped:" destination="h56-EX-FET" eventType="touchUpInside" id="ad0-u4-i86"/>
-                                                    </connections>
-                                                </button>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SHj-ID-3sn">
+                                                            <rect key="frame" x="0.0" y="0.0" width="125" height="160"/>
+                                                        </imageView>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uCB-uj-aKo">
+                                                            <rect key="frame" x="87" y="8" width="30" height="30"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dir-fS-a7c">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                                    <state key="normal" image="newPlus"/>
+                                                                    <connections>
+                                                                        <action selector="addRemoveButtonTapped:" destination="h56-EX-FET" eventType="touchUpInside" id="uB8-ms-JuJ"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="30" id="4uT-xk-MlQ"/>
+                                                                <constraint firstItem="Dir-fS-a7c" firstAttribute="leading" secondItem="uCB-uj-aKo" secondAttribute="leading" id="AUO-ZQ-d0z"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Dir-fS-a7c" secondAttribute="bottom" id="FRd-Ff-jF1"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Dir-fS-a7c" secondAttribute="trailing" id="Uwa-Zw-I5a"/>
+                                                                <constraint firstItem="Dir-fS-a7c" firstAttribute="top" secondItem="uCB-uj-aKo" secondAttribute="top" id="cWJ-xP-k9F"/>
+                                                                <constraint firstAttribute="height" constant="30" id="nhZ-g8-9wr"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="uCB-uj-aKo" secondAttribute="trailing" constant="8" id="2qq-HM-FMM"/>
+                                                        <constraint firstAttribute="trailing" secondItem="SHj-ID-3sn" secondAttribute="trailing" id="L39-35-yOs"/>
+                                                        <constraint firstItem="SHj-ID-3sn" firstAttribute="top" secondItem="awg-vl-b6u" secondAttribute="top" id="gjf-VD-z0J"/>
+                                                        <constraint firstItem="uCB-uj-aKo" firstAttribute="top" secondItem="awg-vl-b6u" secondAttribute="top" constant="8" id="lhV-pm-fey"/>
+                                                        <constraint firstAttribute="bottom" secondItem="SHj-ID-3sn" secondAttribute="bottom" id="xcr-qC-5UE"/>
+                                                        <constraint firstItem="SHj-ID-3sn" firstAttribute="leading" secondItem="awg-vl-b6u" secondAttribute="leading" id="zBT-SD-sKh"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="SHj-ID-3sn" secondAttribute="trailing" id="0TA-2v-Id4"/>
-                                            <constraint firstItem="SHj-ID-3sn" firstAttribute="top" secondItem="h56-EX-FET" secondAttribute="top" id="2Sg-7e-SfB"/>
-                                            <constraint firstItem="SHj-ID-3sn" firstAttribute="leading" secondItem="h56-EX-FET" secondAttribute="leading" id="Ejb-SN-U0a"/>
-                                            <constraint firstItem="tLy-lL-Jfi" firstAttribute="top" secondItem="h56-EX-FET" secondAttribute="top" id="UOc-b3-WiW"/>
-                                            <constraint firstAttribute="bottom" secondItem="SHj-ID-3sn" secondAttribute="bottom" id="ZaN-hH-G04"/>
-                                            <constraint firstAttribute="trailing" secondItem="tLy-lL-Jfi" secondAttribute="trailing" id="brQ-Ik-ycg"/>
-                                            <constraint firstItem="tLy-lL-Jfi" firstAttribute="leading" secondItem="h56-EX-FET" secondAttribute="leading" constant="95" id="ipk-la-HYv"/>
+                                            <constraint firstItem="awg-vl-b6u" firstAttribute="leading" secondItem="h56-EX-FET" secondAttribute="leading" id="dRR-hw-rFe"/>
+                                            <constraint firstAttribute="bottom" secondItem="awg-vl-b6u" secondAttribute="bottom" id="nMn-yJ-S2Q"/>
+                                            <constraint firstItem="awg-vl-b6u" firstAttribute="top" secondItem="h56-EX-FET" secondAttribute="top" id="oba-G9-keN"/>
+                                            <constraint firstAttribute="trailing" secondItem="awg-vl-b6u" secondAttribute="trailing" id="ynx-CL-Wbr"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="addRemoveButton" destination="tLy-lL-Jfi" id="IT5-B3-nKK"/>
-                                            <outlet property="showImage" destination="SHj-ID-3sn" id="lFj-HS-gg1"/>
+                                            <outlet property="addRemoveButtonImage" destination="Dir-fS-a7c" id="til-L8-1t7"/>
+                                            <outlet property="showImage" destination="SHj-ID-3sn" id="k0q-3e-AIP"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="4eq-Es-AqQ" id="nzA-Qq-A2G"/>
+                                    <outlet property="delegate" destination="4eq-Es-AqQ" id="2dI-Cf-RHf"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="SOi-FC-B1W" firstAttribute="top" secondItem="mar-Ba-s2X" secondAttribute="bottom" constant="20" id="Bsg-u2-7kg"/>
-                            <constraint firstItem="BKv-nA-0MD" firstAttribute="bottom" secondItem="SOi-FC-B1W" secondAttribute="bottom" id="KNJ-0R-LOh"/>
-                            <constraint firstItem="mar-Ba-s2X" firstAttribute="trailing" secondItem="BKv-nA-0MD" secondAttribute="trailing" id="KSz-87-nx0"/>
-                            <constraint firstItem="SOi-FC-B1W" firstAttribute="leading" secondItem="BKv-nA-0MD" secondAttribute="leading" constant="20" id="OOu-AD-atu"/>
-                            <constraint firstItem="mar-Ba-s2X" firstAttribute="leading" secondItem="BKv-nA-0MD" secondAttribute="leading" id="aeo-Bv-Zk2"/>
-                            <constraint firstItem="mar-Ba-s2X" firstAttribute="top" secondItem="BKv-nA-0MD" secondAttribute="top" constant="20" id="kqh-12-hMO"/>
-                            <constraint firstItem="SOi-FC-B1W" firstAttribute="trailing" secondItem="BKv-nA-0MD" secondAttribute="trailing" constant="20" id="pPp-n5-Tq4"/>
+                            <constraint firstItem="mar-Ba-s2X" firstAttribute="leading" secondItem="9bo-Kv-q6Z" secondAttribute="leading" id="LlP-vC-hQb"/>
+                            <constraint firstItem="SOi-FC-B1W" firstAttribute="top" secondItem="mar-Ba-s2X" secondAttribute="bottom" constant="20" id="NFJ-q4-QO0"/>
+                            <constraint firstItem="SOi-FC-B1W" firstAttribute="bottom" secondItem="BKv-nA-0MD" secondAttribute="bottom" id="Sp3-xZ-ycK"/>
+                            <constraint firstAttribute="trailing" secondItem="mar-Ba-s2X" secondAttribute="trailing" id="Vqg-I2-DaA"/>
+                            <constraint firstItem="mar-Ba-s2X" firstAttribute="centerX" secondItem="SOi-FC-B1W" secondAttribute="centerX" id="g7Q-Sh-ahe"/>
+                            <constraint firstItem="SOi-FC-B1W" firstAttribute="leading" secondItem="9bo-Kv-q6Z" secondAttribute="leadingMargin" id="ken-P1-5e6"/>
+                            <constraint firstItem="mar-Ba-s2X" firstAttribute="top" secondItem="BKv-nA-0MD" secondAttribute="top" constant="20" id="ldf-GD-kGz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BKv-nA-0MD"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="search" id="bIN-9r-muH"/>
+                    <connections>
+                        <outlet property="collectionView" destination="SOi-FC-B1W" id="MLz-B8-Jxi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JcP-Tr-LKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -357,10 +391,10 @@
             </objects>
             <point key="canvasLocation" x="1534.7826086956522" y="-18.080357142857142"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Base Tab Bar Controller-->
         <scene sceneID="JcR-fn-WmA">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ZA2-e3-QcI" sceneMemberID="viewController">
+                <tabBarController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="ZA2-e3-QcI" customClass="BaseTabBarController" customModule="Retro" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Fo4-B2-5S2">
                         <autoresizingMask key="autoresizingMask"/>
@@ -378,6 +412,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="newPlus" width="100" height="100"/>
         <image name="settings" width="30" height="30"/>
         <image name="tv" width="24" height="24"/>
     </resources>
